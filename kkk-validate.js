@@ -283,10 +283,20 @@ class Rule {
 
     static group(fn) { //组合验证
         try {
-            for (let i in arguments) {
-                if (arguments[i]) throw arguments[i]
+            if(typeof(arguments[arguments.length - 1]) !== 'boolean' || arguments[arguments.length - 1] === true) {
+                for (let i in arguments) {
+                    if(arguments[i] === true) continue
+                    if (arguments[i]) throw arguments[i]
+                }
+                return false
+            } else if(typeof(arguments[arguments.length - 1]) === 'boolean' && arguments[arguments.length - 1] === false) {
+                let arr = []
+                for(let i = 0; i< arguments.length - 1; i++) {
+                    if(arguments[i]) arr.push(arguments[i])
+                }
+                if(arr.length !== 0) throw arr
+                return false
             }
-            return false
         } catch (error) {
             return error
         }

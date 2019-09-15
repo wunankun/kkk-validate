@@ -42,7 +42,7 @@
     const rePassword = "123456"
     // 验证密码格式 + 两次输入是否一致
     // 两个验证都通过返回false, 否则返回错误信息
-    Rule.group(Rule.isPassword(password, "密码"), Rule.isRepeat(password, rePassword, "密码"))
+    Rule.group(Rule.isPassword(password, "密码"), Rule.isRepeat(password, rePassword, "密码"), false)
     
     
 ```
@@ -70,13 +70,13 @@
 | isIdCard (data) | 验证身份证格式
 | isPassword (data, p_min, p_max, adorn) | 验证密码格式
 | isRepeat (data, re_data, adorn) | 重复验证
-| group (fn) | 组合验证
+| group (fn, ... , arr_flag) | 组合验证
 
 ### 参数
 | 名称 | 必填 | 默认值 | 类型 | 参数说明
 | --- | --- | --- | --- | ---
 | data | 是 |  | string\number | 被验证值
-| decimal | 否 | true | Boole | 为true验证包含小数, 为false只能验证整数
+| decimal | 否 | true | boolean | 为true验证包含小数为<br>false只能验证整数
 | adorn | 否 |  | string | 错误提示修饰
 | min_number | 是 |  | number | 最小数值范围
 | max_number | 是 |  | number | 最大数值范围
@@ -85,3 +85,4 @@
 | p_min | 否 | 6 | number | 最小长度
 | p_max | 否 | 16 | number | 最大长度
 | fn | 是 |  | function | 验证函数
+| arr_flag | 否 | true | boolean | 为true验证不通过,停止后面的验证<br>false遇到错误继续验证,以数组形式返回错误信息
