@@ -48,40 +48,90 @@
 ```
 
 
-### 函数
+# 函数
+
+## 1. 数字方法
+<br>
+
 |  名称   |  功能
 |  ----  | ----
-| isNumber (data, decimal, adorn) | 验证数字
-| isMinNumber (data, min_number, decimal, adorn) | 验证数值最小范围
-| isMaxNumber (data, max_number, decimal, adorn) | 验证最数值最大
-| isMinMaxNumber (data, min_number, max_number, decimal, adorn) | 验证数值范围
-| isNumberSL (data, max_length, adorn) | 验证x位小数
-| isMinLength (data, min_length, adorn) | 验证字符串最小长度
-| isMaxLength (data, max_length, adorn) | 验证字符串最大长度
-| isLength (data, min_length, max_length, adorn) | 验证字符串长度范围
-| isNull (data, adorn)| 验证空字符串
-| isSpace (data, adorn) | 验证包含空格
-| isNoCnChar (data, adorn) | 验证包含汉字
-| isAllCnChar (data, adorn) | 验证全为汉字
-| isEnNumUline (data, adorn) | 验证英文 数字 下划线
-| isEmail (data) | 验证邮箱格式
-| isUrl (data) | 验证url格式
-| isPhone (data) | 验证手机号格式
-| isIdCard (data) | 验证身份证格式
+| isNumber (number, n_flag, adorn) | 验证数字
+| isMinNumber (number, min_number, n_flag, adorn) | 验证数值最小范围
+| isMaxNumber (number, max_number, n_flag, adorn) | 验证数值最大范围
+| isMinMaxNumber (number, min_number, max_number, n_flag, adorn) | 验证数值范围
+| isNumberSL (number, max_length, adorn) | 验证x位小数
+<br>
+
+### 参数
+<br>
+
+| 名称 | 必填 | 默认值 | 类型 | 参数说明
+| --- | --- | --- | --- | ---
+| number | 是 |  | string\number | 被验证值
+| n_flag | 否 | true | boolean | 为true验证包含小数<br>false只能验证整数,小数报错
+| adorn | 否 |  | string | 错误提示修饰
+| min_number | 是 |  | number | 最小数值范围
+| max_number | 是 |  | number | 最大数值范围
+<br>
+
+## 2. 字符串方法
+<br>
+
+|  名称   |  功能
+|  ----  | ----
+| isMinLength (string, min_length, adorn) | 验证字符串最小长度
+| isMaxLength (string, max_length, adorn) | 验证字符串最大长度
+| isLength (string, min_length, max_length, adorn) | 验证字符串长度
+| isNull (string, adorn)| 验证空字符串
+| isSpace (string, adorn) | 验证包含空格
+| isNoCnChar (string, adorn) | 验证包含汉字
+| isAllCnChar (string, adorn) | 验证全为汉字
+| isEnNumUline (string, adorn) | 验证英文 数字 下划线
+<br>
+
+### 参数
+<br>
+
+| 名称 | 必填 | 默认值 | 类型 | 参数说明
+| --- | --- | --- | --- | ---
+| string | 是 |  | string\number | 被验证值
+| adorn | 否 |  | string | 错误提示修饰
+| min_length | 是 |  | number | 最小长度
+| max_length | 是 |  | number | 最大长度
+<br>
+
+## 3. 格式验证
+<br>
+
+|  名称   |  功能
+|  ----  | ----
+| isEmail (string) | 验证邮箱格式
+| isUrl (string) | 验证url格式
+| isPhone (string) | 验证手机号格式
+| isIdCard (string) | 验证身份证格式
+<br>
+
+### 参数
+| 名称 | 必填 | 默认值 | 类型 | 参数说明
+| --- | --- | --- | --- | ---
+| string | 是 |  | string\number | 被验证值
+<br>
+
+## 4. 其他验证
+<br>
+
+| 名称 | 必填 | 默认值 | 类型 | 参数说明
+| --- | --- | --- | --- | ---
 | isPassword (data, p_min, p_max, adorn) | 验证密码格式
 | isRepeat (data, re_data, adorn) | 重复验证
 | group (fn, ... , arr_flag) | 组合验证
+<br>
 
 ### 参数
 | 名称 | 必填 | 默认值 | 类型 | 参数说明
 | --- | --- | --- | --- | ---
 | data | 是 |  | string\number | 被验证值
-| decimal | 否 | true | boolean | 为true验证包含小数为<br>false只能验证整数
 | adorn | 否 |  | string | 错误提示修饰
-| min_number | 是 |  | number | 最小数值范围
-| max_number | 是 |  | number | 最大数值范围
-| min_length | 是 |  | number | 最小长度
-| max_length | 是 |  | number | 最大长度
 | p_min | 否 | 6 | number | 最小长度
 | p_max | 否 | 16 | number | 最大长度
 | fn | 是 |  | function | 验证函数
