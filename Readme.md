@@ -120,8 +120,8 @@
 ## 4. 其他验证
 <br>
 
-| 名称 | 必填 | 默认值 | 类型 | 参数说明
-| --- | --- | --- | --- | ---
+|  名称   |  功能
+|  ----  | ----
 | isPassword (data, p_min, p_max, adorn) | 验证密码格式
 | isRepeat (data, re_data, adorn) | 重复验证
 | group (fn, ... , arr_flag) | 组合验证
