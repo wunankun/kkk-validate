@@ -10,13 +10,13 @@
     const Rule = requere('kkk-validate') //引入
 ```
 
-#### 2. 下载代码
+####  或下载代码
 通过git下载代码, 将kkk-validate.js放入项目目录中
 ```javascript
     const Rule = require('./kkk-validate.js') //引入
 ```
 
-#### 3. 使用
+#### 2. 使用
 ```javascript
     //案例1
     // adorn参数是对错误信息的修饰, 可以不填
@@ -36,7 +36,7 @@
     }
 ```
 
-#### 4. 组合验证
+#### 3. 组合验证
 ```javascript
     const password = "123456"
     const rePassword = "123456"

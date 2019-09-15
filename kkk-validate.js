@@ -15,7 +15,8 @@ class Rule {
         }
         try {
             if (number_flag) {
-                if (this.isNumberAll(string, adorn)) throw this.isNumberAll(string, adorn)
+                let f = this.isNumberAll(string, adorn)
+                if (f) throw f
                 return false
             } else {
                 if (!(/^\d+$/).test(string)) throw `${adorn}只能输入整数`
@@ -37,8 +38,9 @@ class Rule {
 
     static isNumberSL(string, length, adorn = '') { //验证几位小数
         try {
+            let f = this.isNumberAll(string, adorn)
             if (this.isNumber(length, false)) throw new Error(`function isNumberSL() 参数(${length})类型错误, 应该为整数`)
-            if (this.isNumberAll(string)) return this.isNumberAll(string, adorn)
+            if (f) return this.isNumberAll(f)
             let reg = new RegExp(`^(([1-9][0-9]*)|(([0]\\.\\d{1,${length}}|[1-9][0-9]*\\.\\d{1,${length}})))$`)
             if (!reg.test(string)) throw `${adorn}不能超过${length}位小数`
             return false
@@ -63,7 +65,8 @@ class Rule {
             number_flag = true
         }
         try {
-            if (this.isNumber(string, number_flag)) throw this.isNumber(string, number_flag, adorn)
+            let f = this.isNumber(string, number_flag, adorn)
+            if (f) throw f
             if (parseFloat(string) < min) throw `${adorn}不能小于${min}`
             return false
 
@@ -88,7 +91,8 @@ class Rule {
             number_flag = true
         }
         try {
-            if (this.isNumber(string, number_flag)) throw this.isNumber(string, number_flag, adorn)
+            let f = this.isNumber(string, number_flag, adorn)
+            if (f) throw f
             if (parseFloat(string) > max) throw `${adorn}不能大于${max}`
             return false
         } catch (error) {
@@ -113,7 +117,8 @@ class Rule {
             number_flag = true
         }
         try {
-            if (this.isNumber(string, number_flag)) throw this.isNumber(string, number_flag, adorn)
+            let f = this.isNumber(string, number_flag, adorn)
+            if (f) throw f
             if (parseFloat(string) < min || parseFloat(string) > max) throw `${adorn}范围应在${min} - ${max}之间`
             return false
         } catch (error) {
@@ -165,7 +170,8 @@ class Rule {
 
     static isSpace(string, adorn = '') { //判断是否有空格
         try {
-            if(this.isNull(string)) throw this.isNull(string, adorn)
+            let f = this.isNull(string, adorn)
+            if(f) throw f
             if ((/(^\s+)|(\s+$)|\s+/g).test(string)) throw `${adorn}不能包含空格`
             return false
         } catch (error) {
@@ -175,7 +181,8 @@ class Rule {
 
     static isNoCnChar(string, adorn = '') { //判断是否包含汉字
         try {
-            if(this.isNull(string)) throw this.isNull(string, adorn)
+            let f = this.isNull(string, adorn)
+            if(f) throw f
             if ((/[\u4e00-\u9fa5]/gm).test(string)) throw `${adorn}不能包含汉字`
             return false
         } catch (error) {
@@ -210,8 +217,10 @@ class Rule {
         try {
             if (this.isNumber(min, false)) throw new Error(`function isPassword() 参数(${min})类型错误, 应该为整数`)
             if (this.isNumber(max, false)) throw new Error(`function isPassword() 参数(${max})类型错误, 应该为整数`)
-            if (this.isLength(string, min, max)) throw this.isLength(string, min, max, adorn)
-            if (this.isEnNumUline(string)) throw this.isEnNumUline(string, adorn)
+            let f = this.isLength(string, min, max, adorn)
+            if (f) throw f
+            let f1 = this.isEnNumUline(string, adorn)
+            if (f1) throw f1
             return false
         } catch (error) {
             return error
@@ -227,9 +236,12 @@ class Rule {
         try {
             if (this.isNumber(min, false)) throw new Error(`function isPassword() 参数(${min})类型错误, 应该为整数`)
             if (this.isNumber(max, false)) throw new Error(`function isPassword() 参数(${max})类型错误, 应该为整数`)
-            if (this.isSpace(string)) throw this.isSpace(string, adorn)
-            if (this.isLength(string, min, max)) throw this.isLength(string, min, max, adorn)
-            if (this.isNoCnChar(string)) throw this.isNoCnChar(string, adorn)
+            let f = this.isSpace(string, adorn)
+            if (f) throw f
+            let f1 = this.isLength(string, min, max, adorn)
+            if (f1) throw f1
+            let f2 = this.isNoCnChar(string, adorn)
+            if (f2) throw f2
             return false
         } catch (error) {
             return error
